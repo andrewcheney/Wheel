@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap');
+iframe {
+    margin: 0 auto;
+    display: block;
+    width: 600px;
+    height: 600px;
+    border: 0px solid black;
+    box-shadow: inset 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+}
+
+textarea {
+    margin: 0 auto;
+    margin-top: 40px;
+    display: block;
+    width: 600px;
+    height: 80px;
+    border: 0px solid black;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    resize: vertical;
+    font-weight: 800;
+    font-family: 'Lexend', sans-serif;
+    font-size: 16px
+}
+
+a {
+    margin: 0 auto;
+    margin-top: 40px;
+    display: block;
+    width: 600px;
+    border: 0px solid black;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    resize: vertical;
+    font-weight: 800;
+    font-family: 'Lexend', sans-serif;
+    font-size: 16px;
+    overflow-wrap: break-word;
+}
