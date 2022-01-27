@@ -27,7 +27,7 @@ function hexToRgb(hex) {
 tick = 20
 tickv = 0
 inc = 0;
-incvel = randInt(50);
+incvel = randInt(50) + 20;
 
 pickcolor = "#000";
 
