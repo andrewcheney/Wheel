@@ -35,7 +35,7 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
         //pickcolor = col;
     }
 
-
+    //
     end = perc / 100 * 2 * Math.PI + degToRad(rot)
     ctx.fillStyle = col; //red
     ctx.strokeStyle = col;
@@ -54,14 +54,24 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
     ctx.fill();
     ctx.stroke();
     ctx.fillStyle = "rgba(0,0,0,0.25)";
+
+    ctx.lineWidth = 4;
     ctx.textAlign = "left";
     ctx.font = fsize + "px Lexend";
     x1 = x + Math.cos(start + perc / 100 * Math.PI * 0) * rad * 0.95;
     y1 = y + Math.sin(start + perc / 100 * Math.PI * 0) * rad * 0.95;
     ctx.translate(x1, y1);
     ctx.rotate(Math.atan2(canvas.height / 2 - y1, canvas.width / 2 - x1)); // + Math.PI / 2);
+    ctx.fillStyle = col;
+    ctx.strokeStyle = col;
+    ctx.strokeText(text, 0, 0);
+    ctx.strokeStyle = "rgba(255,255,255,0.25)";
+    ctx.strokeText(text, 0, 0);
+    ctx.fillText(text, 0, 0);
+    ctx.fillStyle = "rgba(0,0,0,0.25)";
     ctx.fillText(text, 0, 0);
     ctx.resetTransform();
+    ctx.lineWidth = 1;
 }
 
 function drawWheel(options, rot2) {
@@ -93,16 +103,15 @@ function drawWheel(options, rot2) {
 
     for (i = 0; i < size; i++) {
         rot = i * 360 / size + rot2;
-        slice(canvas.width / 2, canvas.height / 2, 100 / size, Math.min(canvas.height, canvas.width) / 2 * 0.9, rot, colors[1][ct], options[i], size);
+        slice(canvas.width / 2, canvas.height / 2, 100 / size, Math.min(canvas.height, canvas.width) / 2 * 0.9, rot, colors[0][ct], options[i], size);
         ct++;
-        if (ct > 9) ct = 0;
+        if (ct > colors[0].length - 1) ct = 0;
     }
 }
 
 window.onload = function() {
 
     colors = [
-        ["#001219", "#005f73", "#0A9396", "#94D2BD", "#E9D8A6", "#EE9B00", "#CA6702", "#BB3E03", "#AE2012", "#9B2226"],
         ["#f94144", "#f3722c", "#f8961e", "#f9844a", "#f9c74f", "#90be6d", "#43aa8b", "#4d908e", "#577590", "#277da1"]
     ];
 
@@ -112,7 +121,21 @@ window.onload = function() {
         temp = temp.replace("_", " ");
     }
     if (temp.includes("option")) {
-        pchoices = String(temp.split("?options=")[1]).split(",");
+        if (temp.includes("theme")) {
+            pchoices = String(temp.split("?options=")[1]).split("?theme=")[0].split(",");
+            colors = [String(temp.split("?options=")[1]).split("?theme=")[1].split(",")];
+            for (i = 0; i < colors[0].length; i++) {
+                colors[0][i] = "#" + colors[0][i];
+            }
+        } else {
+            pchoices = String(temp.split("?options=")[1]).split(",");
+        }
+    } else if (temp.includes("theme")) {
+        colors = [String(temp.split("?theme=")[1]).split(",")];
+        for (i = 0; i < colors[0].length; i++) {
+            colors[0][i] = "#" + colors[0][i];
+        }
+
     }
     setInterval(function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
