@@ -16,7 +16,7 @@ function degToRad(degrees) {
 tick = 20
 tickv = 0
 inc = 0;
-incvel = randInt(100) + 50;
+incvel = randInt(0);
 
 function dist(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
@@ -45,17 +45,18 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
     ctx.moveTo(x, y);
     ctx.lineTo(x + Math.cos(start) * rad, y + Math.sin(start) * rad);
     ctx.lineTo(x + Math.cos(end) * rad, y + Math.sin(end) * rad);
-    fsize = dist(x + Math.cos(start) * rad, y + Math.sin(start) * rad, x + Math.cos(end) * rad, y + Math.sin(end) * rad) / text.length / 1.75;
+    fsize = dist(x + Math.cos(start) * rad, y + Math.sin(start) * rad, x + Math.cos(end) * rad, y + Math.sin(end) * rad) / (amount * (15.1343 * Math.pow(amount, -1.46905)));
+
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
     ctx.fillStyle = "rgba(0,0,0,0.25)";
-    ctx.textAlign = "center";
+    ctx.textAlign = "left";
     ctx.font = fsize + "px Lexend";
-    x1 = x + Math.cos(start + perc / 100 * Math.PI) * rad * 0.85;
-    y1 = y + Math.sin(start + perc / 100 * Math.PI) * rad * 0.85;
+    x1 = x + Math.cos(start + perc / 100 * Math.PI * 0) * rad * 0.95;
+    y1 = y + Math.sin(start + perc / 100 * Math.PI * 0) * rad * 0.95;
     ctx.translate(x1, y1);
-    ctx.rotate(Math.atan2(canvas.height / 2 - y1, canvas.width / 2 - x1) + Math.PI / 2);
+    ctx.rotate(Math.atan2(canvas.height / 2 - y1, canvas.width / 2 - x1)); // + Math.PI / 2);
     ctx.fillText(text, 0, 0);
     ctx.resetTransform();
 }
@@ -63,7 +64,7 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
 function drawWheel(options, rot2) {
     size = options.length;
     ct = 0;
-    if (tick > 60 + randInt(20)) { tick = 60 + randInt(20) };
+    if (tick > 60 + randInt(40)) { tick = 60 + randInt(40) };
     ctx.fillStyle = "#000"; //red
     ctx.strokeStyle = "#000";
     off = Math.PI * 8 / 6 - tick / 100
@@ -117,6 +118,6 @@ window.onload = function() {
         drawWheel(pchoices, inc);
         inc += incvel;
         incvel = incvel * 0.99;
-        if (incvel <= 0.05) { incvel = 0 };
+        if (incvel <= 0.01) { incvel = 0 };
     }, 12);
 };
