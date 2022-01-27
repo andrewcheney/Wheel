@@ -1,7 +1,9 @@
 # Wheel
+You can use https://andrewcheney.github.io/Wheel/create.html to create the wheels or follow the instructions below.
+
 This website spins a wheel upon loading, displaying a random given choice. To change the possible outputs add "?options=" to the end of the URL and put the options you want there separated by commas. 
 Examples: 
-https://andrewcheney.github.io/Wheel/?options=Dog,Cat,Fish
+https://andrewcheney.github.io/Wheel/https://andrewcheney.github.io/Wheel/?options=Dog,Cat,Fish
 
 https://andrewcheney.github.io/Wheel/?options=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
 
