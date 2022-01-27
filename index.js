@@ -18,6 +18,8 @@ tickv = 0
 inc = 0;
 incvel = randInt(100);
 
+pickcolor = "#000";
+
 function dist(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 }
@@ -30,6 +32,7 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
     }
     if ((perc / 100 * 360 + rot) % 360 <= 270 + incvel && (perc / 100 * 360 + rot) % 360 >= 270) {
         tick += incvel * 50;
+        pickcolor = col;
     }
 
 
@@ -65,8 +68,8 @@ function drawWheel(options, rot2) {
     size = options.length;
     ct = 0;
     if (tick > 60 + randInt(40)) { tick = 60 + randInt(40) };
-    ctx.fillStyle = "#000"; //red
-    ctx.strokeStyle = "#000";
+    ctx.fillStyle = pickcolor; //red
+    ctx.strokeStyle = pickcolor;
     off = Math.PI * 8 / 6 - tick / 100
     x0 = canvas.width / 2;
     rad1 = (canvas.height + canvas.width) / 80;
