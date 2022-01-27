@@ -45,15 +45,15 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
     ctx.moveTo(x, y);
     ctx.lineTo(x + Math.cos(start) * rad, y + Math.sin(start) * rad);
     ctx.lineTo(x + Math.cos(end) * rad, y + Math.sin(end) * rad);
-    fsize = dist(x + Math.cos(start) * rad, y + Math.sin(start) * rad, x + Math.cos(end) * rad, y + Math.sin(end) * rad) / text.length / 1.5;
+    fsize = dist(x + Math.cos(start) * rad, y + Math.sin(start) * rad, x + Math.cos(end) * rad, y + Math.sin(end) * rad) / text.length / 1.75;
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
     ctx.fillStyle = "rgba(0,0,0,0.25)";
     ctx.textAlign = "center";
     ctx.font = fsize + "px Lexend";
-    x1 = x + Math.cos(start + perc / 100 * Math.PI) * rad * 0.9;
-    y1 = y + Math.sin(start + perc / 100 * Math.PI) * rad * 0.9;
+    x1 = x + Math.cos(start + perc / 100 * Math.PI) * rad * 0.85;
+    y1 = y + Math.sin(start + perc / 100 * Math.PI) * rad * 0.85;
     ctx.translate(x1, y1);
     ctx.rotate(Math.atan2(canvas.height / 2 - y1, canvas.width / 2 - x1) + Math.PI / 2);
     ctx.fillText(text, 0, 0);
