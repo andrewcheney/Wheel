@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap');
+html,
+body {
+    padding: 0;
+    margin: 0;
+    top: 0px;
+    bottom: 0px;
+    background: rgba(85, 52, 52, 0);
+    position: fixed;
+    cursor: auto;
+}
+
+canvas {
+    bottom: 0px;
+    top: 0px;
+    position: fixed;
+    margin: 0px;
+    z-index: 0;
+    filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.25));
+    z-index: 0;
+}
+
+.choice {
+    text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px, 0 20px 20px rgba(0, 0, 0, 0.25);
+    -webkit-font-smoothing: antialiased;
+    font-weight: 800;
+    font-family: 'Lexend', sans-serif;
+    font-size: 32px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    z-index: 10;
+    color: #fff;
+}
