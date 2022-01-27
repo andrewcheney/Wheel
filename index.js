@@ -27,7 +27,7 @@ function hexToRgb(hex) {
 tick = 20
 tickv = 0
 inc = 0;
-incvel = randInt(50) + 20;
+incvel = randInt(100);
 
 pickcolor = "#000";
 
@@ -42,7 +42,7 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
         document.getElementById("choice").style.fontSize = Math.min(canvas.height, canvas.width) / text.length / 1.5 + "px";
     }
     if ((perc / 100 * 360 + rot) % 360 <= 270 + incvel && (perc / 100 * 360 + rot) % 360 >= 270) {
-        tick += incvel * 50;
+        tick += incvel * 50 + 5;
         //pickcolor = col;
     }
 
@@ -122,6 +122,15 @@ function drawWheel(options, rot2) {
         ct++;
         if (ct > colors[0].length - 1) ct = 0;
     }
+
+    /*var grd = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, Math.min(canvas.height, canvas.width) / 2 * 0.6);
+    grd.addColorStop(0, "rgba(0,0,0,0.25)");
+    grd.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = grd;
+    ctx.beginPath();
+    ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.height, canvas.width) / 2 * 0.9, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fill();*/
 }
 
 window.onload = function() {
