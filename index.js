@@ -13,10 +13,21 @@ function degToRad(degrees) {
     var pi = Math.PI;
     return degrees * (pi / 180);
 }
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+
 tick = 20
 tickv = 0
 inc = 0;
-incvel = randInt(100);
+incvel = randInt(50);
 
 pickcolor = "#000";
 
@@ -62,13 +73,17 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
     y1 = y + Math.sin(start + perc / 100 * Math.PI * 0) * rad * 0.95;
     ctx.translate(x1, y1);
     ctx.rotate(Math.atan2(canvas.height / 2 - y1, canvas.width / 2 - x1)); // + Math.PI / 2);
-    ctx.fillStyle = col;
+    //col2 = hexToRgb(col);
+    //col2.r = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
+    //col2.g = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
+    //col2.b = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
+    ctx.fillStyle = col; //"rgba(" + (col2.r) + "," + (col2.g) + "," + (col2.b) + ",0.75)";
     ctx.strokeStyle = col;
-    ctx.strokeText(text, 0, 0);
-    ctx.strokeStyle = "rgba(255,255,255,0.25)";
+    //ctx.strokeText(text, 0, 0);
+    ctx.strokeStyle = "rgba(0,0,0,0.25)";
     ctx.strokeText(text, 0, 0);
     ctx.fillText(text, 0, 0);
-    ctx.fillStyle = "rgba(0,0,0,0.25)";
+    ctx.fillStyle = "rgba(255,255,255,0.5)";
     ctx.fillText(text, 0, 0);
     ctx.resetTransform();
     ctx.lineWidth = 1;
