@@ -105,7 +105,7 @@ window.onload = function() {
     pchoices = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     temp = String(window.location.href);
     if (temp.includes("option")) {
-        pchoices = String(temp.split("?options=")[1]).split(",");
+        pchoices = String(temp.replace("_", " ").split("?options=")[1]).split(",");
     }
     setInterval(function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
