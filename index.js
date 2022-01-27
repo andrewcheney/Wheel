@@ -16,7 +16,7 @@ function degToRad(degrees) {
 tick = 20
 tickv = 0
 inc = 0;
-incvel = randInt(0);
+incvel = randInt(100);
 
 function dist(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
