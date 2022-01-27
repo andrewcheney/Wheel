@@ -1,5 +1,5 @@
 # Wheel
-This website spins a wheel, outputting a random given choice. To change the possible outputs add "?options=" to the end of the URL and put the options you want there separated by commas. 
+This website spins a wheel upon loading, displaying a random given choice. To change the possible outputs add "?options=" to the end of the URL and put the options you want there separated by commas. 
 Examples: 
 https://andrewcheney.github.io/Wheel/?options=Dog,Cat,Fish
 
