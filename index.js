@@ -144,7 +144,7 @@ window.onload = function() {
     while (temp.includes("_")) {
         temp = temp.replace("_", " ");
     }
-    if (temp.includes("?option=")) {
+    if (temp.includes("?options=")) {
         if (temp.includes("?theme=")) {
             pchoices = String(temp.split("?options=")[1]).split("?theme=")[0].split(",");
             colors = [String(temp.split("?options=")[1]).split("?theme=")[1].split(",")];
