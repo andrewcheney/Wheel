@@ -37,12 +37,14 @@ function dist(x1, y1, x2, y2) {
 
 function slice(x, y, perc, rad, rot, col, text, amount) {
     start = degToRad(rot)
-    if ((perc / 100 * 360 + rot) % 360 <= 270 + (perc / 100 * 360) && (perc / 100 * 360 + rot) % 360 > 270) {
+    if ((perc / 100 * 360 + rot) % 360 < 270 + (perc / 100 * 360) && (perc / 100 * 360 + rot) % 360 > 270) {
         document.getElementById("choice").innerHTML = text;
         document.getElementById("choice").style.fontSize = Math.min(canvas.height, canvas.width) / text.length / 1.5 + "px";
     }
     if ((perc / 100 * 360 + rot) % 360 <= 270 + incvel && (perc / 100 * 360 + rot) % 360 >= 270) {
         tick += incvel * 50 + 20;
+        incvel -= 0.1;
+        if (incvel < 0) { incvel = 0; }
         //pickcolor = col;
     }
 
