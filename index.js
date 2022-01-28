@@ -47,7 +47,7 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
         if (incvel < 0) { incvel = 0; }
         //pickcolor = col;
     }
-    if ((perc / 100 * 360 + rot) % 360 <= 270 && (perc / 100 * 360 + rot) % 360 >= 269 && incvel < 0.1) {
+    if ((perc / 100 * 360 + rot) % 360 <= 270 && (perc / 100 * 360 + rot) % 360 >= 269 && incvel < 0.25) {
         incvel = 0;
     }
 
