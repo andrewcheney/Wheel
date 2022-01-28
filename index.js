@@ -144,8 +144,8 @@ window.onload = function() {
     while (temp.includes("_")) {
         temp = temp.replace("_", " ");
     }
-    if (temp.includes("option")) {
-        if (temp.includes("theme")) {
+    if (temp.includes("?option=")) {
+        if (temp.includes("?theme=")) {
             pchoices = String(temp.split("?options=")[1]).split("?theme=")[0].split(",");
             colors = [String(temp.split("?options=")[1]).split("?theme=")[1].split(",")];
             for (i = 0; i < colors[0].length; i++) {
@@ -154,7 +154,7 @@ window.onload = function() {
         } else {
             pchoices = String(temp.split("?options=")[1]).split(",");
         }
-    } else if (temp.includes("theme")) {
+    } else if (temp.includes("?theme=")) {
         colors = [String(temp.split("?theme=")[1]).split(",")];
         for (i = 0; i < colors[0].length; i++) {
             colors[0][i] = "#" + colors[0][i];
