@@ -42,7 +42,7 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
         document.getElementById("choice").style.fontSize = Math.min(canvas.height, canvas.width) / text.length / 1.5 + "px";
     }
     if ((perc / 100 * 360 + rot) % 360 <= 270 + incvel && (perc / 100 * 360 + rot) % 360 >= 270) {
-        tick += incvel * 50 + 5;
+        tick += incvel * 50 + 20;
         //pickcolor = col;
     }
 
@@ -60,10 +60,21 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
     ctx.lineTo(x + Math.cos(start) * rad, y + Math.sin(start) * rad);
     ctx.lineTo(x + Math.cos(end) * rad, y + Math.sin(end) * rad);
     fsize = dist(x + Math.cos(start) * rad, y + Math.sin(start) * rad, x + Math.cos(end) * rad, y + Math.sin(end) * rad) / (amount * (15.1343 * Math.pow(amount, -1.46905)));
-
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(x + Math.cos(start) * rad, y + Math.sin(start) * rad, rad / 100, 0, Math.PI * 2, false);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(x + Math.cos(end) * rad, y + Math.sin(end) * rad, rad / 100, 0, Math.PI * 2, false);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
     ctx.fillStyle = "rgba(0,0,0,0.25)";
 
     ctx.lineWidth = 4;
@@ -144,8 +155,8 @@ window.onload = function() {
     while (temp.includes("_")) {
         temp = temp.replace("_", " ");
     }
-    if (temp.includes("?options=")) {
-        if (temp.includes("?theme=")) {
+    if (temp.includes("option")) {
+        if (temp.includes("theme")) {
             pchoices = String(temp.split("?options=")[1]).split("?theme=")[0].split(",");
             colors = [String(temp.split("?options=")[1]).split("?theme=")[1].split(",")];
             for (i = 0; i < colors[0].length; i++) {
@@ -154,7 +165,7 @@ window.onload = function() {
         } else {
             pchoices = String(temp.split("?options=")[1]).split(",");
         }
-    } else if (temp.includes("?theme=")) {
+    } else if (temp.includes("theme")) {
         colors = [String(temp.split("?theme=")[1]).split(",")];
         for (i = 0; i < colors[0].length; i++) {
             colors[0][i] = "#" + colors[0][i];
