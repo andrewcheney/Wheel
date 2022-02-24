@@ -28,7 +28,7 @@ tick = 20
 tickv = 0
 inc = 0;
 incvel = randInt(50);
-
+hidetext = true;
 pickcolor = "#000";
 
 function dist(x1, y1, x2, y2) {
@@ -79,30 +79,30 @@ function slice(x, y, perc, rad, rot, col, text, amount) {
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
-
-    ctx.fillStyle = "rgba(0,0,0,0.25)";
-
-    ctx.lineWidth = 4;
-    ctx.textAlign = "left";
-    ctx.font = fsize + "px Lexend";
-    x1 = x + Math.cos(start + perc / 100 * Math.PI * 0) * rad * 0.95;
-    y1 = y + Math.sin(start + perc / 100 * Math.PI * 0) * rad * 0.95;
-    ctx.translate(x1, y1);
-    ctx.rotate(Math.atan2(canvas.height / 2 - y1, canvas.width / 2 - x1)); // + Math.PI / 2);
-    //col2 = hexToRgb(col);
-    //col2.r = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
-    //col2.g = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
-    //col2.b = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
-    ctx.fillStyle = col; //"rgba(" + (col2.r) + "," + (col2.g) + "," + (col2.b) + ",0.75)";
-    ctx.strokeStyle = col;
-    //ctx.strokeText(text, 0, 0);
-    ctx.strokeStyle = "rgba(0,0,0,0.25)";
-    ctx.strokeText(text, 0, 0);
-    ctx.fillText(text, 0, 0);
-    ctx.fillStyle = "rgba(255,255,255,0.5)";
-    ctx.fillText(text, 0, 0);
-    ctx.resetTransform();
-    ctx.lineWidth = 1;
+    if (hidetext) {
+        ctx.fillStyle = "rgba(0,0,0,0.25)";
+        ctx.lineWidth = 4;
+        ctx.textAlign = "left";
+        ctx.font = fsize + "px Lexend";
+        x1 = x + Math.cos(start + perc / 100 * Math.PI * 0) * rad * 0.95;
+        y1 = y + Math.sin(start + perc / 100 * Math.PI * 0) * rad * 0.95;
+        ctx.translate(x1, y1);
+        ctx.rotate(Math.atan2(canvas.height / 2 - y1, canvas.width / 2 - x1)); // + Math.PI / 2);
+        //col2 = hexToRgb(col);
+        //col2.r = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
+        //col2.g = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
+        //col2.b = ((255 - col2.r) + (255 - col2.g) + (255 - col2.b)) / 2;
+        ctx.fillStyle = col; //"rgba(" + (col2.r) + "," + (col2.g) + "," + (col2.b) + ",0.75)";
+        ctx.strokeStyle = col;
+        //ctx.strokeText(text, 0, 0);
+        ctx.strokeStyle = "rgba(0,0,0,0.25)";
+        ctx.strokeText(text, 0, 0);
+        ctx.fillText(text, 0, 0);
+        ctx.fillStyle = "rgba(255,255,255,0.5)";
+        ctx.fillText(text, 0, 0);
+        ctx.resetTransform();
+        ctx.lineWidth = 1;
+    }
 }
 
 function drawWheel(options, rot2) {
@@ -160,6 +160,10 @@ window.onload = function() {
     while (temp.includes("_")) {
         temp = temp.replace("_", " ");
     }
+    if (temp.includes("?hidetext")) {
+        temp = temp.replace("?hidetext", "");
+        hidetext = false;
+    }
     if (temp.includes("option")) {
         if (temp.includes("theme")) {
             pchoices = String(temp.split("?options=")[1]).split("?theme=")[0].split(",");
@@ -184,6 +188,8 @@ window.onload = function() {
         drawWheel(pchoices, inc);
         inc += incvel;
         incvel = incvel * 0.99;
-        if (incvel <= 0.025) { incvel = 0 };
+        if (incvel <= 0.025) {
+            incvel = 0;
+        }
     }, 30);
 };
