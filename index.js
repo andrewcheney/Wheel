@@ -27,7 +27,7 @@ function hexToRgb(hex) {
 tick = 20
 tickv = 0
 inc = 0;
-incvel = randInt(100);
+incvel = randInt(50);
 
 pickcolor = "#000";
 
@@ -185,5 +185,5 @@ window.onload = function() {
         inc += incvel;
         incvel = incvel * 0.99;
         if (incvel <= 0.025) { incvel = 0 };
-    }, 12);
+    }, 30);
 };
