@@ -21,7 +21,7 @@ canvas {
 }
 
 .choice {
-    text-shadow: 0 10px 10px rgba(255, 255, 255, 0.25);
+    text-shadow: 0 10px 10px rgba(255, 255, 255, 0.5);
     -webkit-font-smoothing: antialiased;
     font-weight: 800;
     font-family: 'Lexend', sans-serif;
